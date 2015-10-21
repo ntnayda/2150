@@ -13,32 +13,35 @@
 #include "hashTable.h"
 using namespace std;
 
-hashTable::hashTable(int size) {
+hashTable::hashTable(string filename,int size) {
+  string line;
   array = new string[size];
-  asize = size;
-}
-  int hashTable::rehash(string line, int i) {
-    int value = (int)line.at(0)+(int)line.at(1)+(int)line.at(2);
-	int x = value % asize;
-	int hash2 = pow(x,3);
-	return (abs((value + i * hash2) % asize)); 
+  ifstream myfile (filename);
+  if (myfile.is_open()) {
+    while (getline(myfile,line)) {
+      if (line.size()>=3) {
+	char* word = line.c_str();
+	int value = (int)word[0]+(int)word[1]+(int)word[2];
+	int x = wordsize % size;
+	int hash2 = pow(x,2);
+	int i = 1;
+	while(array[(value+i*hash2)%size] != NULL) {
+	i++;
+	}
+	array[(value+i*hash2)%size] = line;
+      }
+    }
+    myfile.close();
   }
 
-  string hashTable::get(int spot) {        
+  int hashTable::rehash(string line, int size,int i) {
+	char* word = line.c_str();
+	int value = (int)word[0]+(int)word[1]+(int)word[2];
+	int x = wordsize % size;
+	int hash2 = pow(x,2);
+	return ((value + i * hash2) % size); 
+  }
+
+  string hashTable::get(int spot) {    
     return array[spot];
   }
-void hashTable::push(string line) {
-int value = (int)line.at(0)+(int)line.at(1)+(int)line.at(2);
-	int x = (value % asize);
-	int hash2 = pow(x,3);
-	int i = 1;
-	int spot = (value+i*hash2)%asize;
-	//cout <<spot<<endl;
-	//cout <<line<<endl;
-
-	while(array[spot].compare("") != 0) {
-	i++;
-	spot = abs((value+i*hash2)%asize);
-	}
-	array[spot] = line;
-}
