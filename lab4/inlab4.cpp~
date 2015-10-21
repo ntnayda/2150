@@ -1,0 +1,15 @@
+//Nathan Nayda
+//ntn4jg@virgina.edu
+//ntn4jg
+//inlab4.cpp
+//9/22/2015
+
+#include <iostream>
+#include <climits>
+#include <cfloat>
+
+using namespace std;
+
+int main() {
+
+}

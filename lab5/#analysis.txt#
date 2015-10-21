@@ -1,0 +1,8 @@
+Nathan Nayda
+10/14/2015
+Section
+
+testfile4.txt:
+a b c d e f g h i j k l m n o p q r s t u v w x y z
+
+My file contains the alphabet in order. When entered into the binary search tree it will place each new object in the right node; therefore, the entire tree will be a linked list of nodes to the right. However, when it's entered into the AVL tree, it will make a series of rotations to balance the tree. If we search for z in each tree AVL will perform much faster. The binary tree will have to check through every single other node before it will find z.

@@ -1,0 +1,9 @@
+Nathan Nayda
+ntn4jg@virginia.edu
+ntn4jg
+difficulties.txt
+9/17/2015
+
+One of the hardest difficulties I had was the incorrect spelling of methods and variables. I was viewing lab 2 files and found myself typing ListNode instead of StackNode ect. in various places throughout my files. It took a little while to find those errors and correct them. 
+
+Another issue I had was in my StackItr class I named a method "next()" that would move the iterator to the next StackNode in the Stack. However, I also had a StackNode variable in the StackItr named "next" which held the next StackNode in the stack. Therefore, when I tried to call iter.next() the compiler was confused about which next to call.

@@ -1,0 +1,24 @@
+//Nathan Nayda
+//ntn4jg@virginia.edu
+//ntn4jg
+//testPostfixCalculator.cpp
+//9/13/2015
+
+#include <iostream>
+
+using namespace std;
+
+int main() {
+  PostfixCalculator p;
+  p.push(1);
+  p.push(2);
+  p.push(3);
+  p.push(4);
+  p.push(5);
+  p.add();
+  p.add();
+  p.add();
+  p.add();
+  cout << "Result is: " << p.top() <<endl;
+  return 0;
+}

@@ -1,0 +1,22 @@
+//Nathan Nayda
+//ntn4jg
+//ntn4jg@virginia.edu
+//ListNode.cpp
+//9/6/2015
+
+#include <iostream>
+#include "ListNode.h"
+//#include "List.h"
+//#include "ListItr.h"
+using namespace std;
+
+ListNode::ListNode() {       //Constructor
+  int value;
+  next = new ListNode;
+  previous = new ListNode;
+  //next->next = NULL;
+  //next->previous = NULL;
+  //previous->next = NULL;
+  // previous->previous = NULL;
+}
+

@@ -1,0 +1,31 @@
+//Nathan Nayda
+//ntn4jg@viriginia.edu
+//ntn4jg
+//Stack.cpp
+//9/17/2015
+
+#include "Stack.h"
+#include <iostream>
+
+using namespace std;
+
+Stack::Stack() {
+  head = new ListNode;
+}
+
+void Stack::push(int x) {
+  ListItr iter(head);
+  if (iter.current->next != Null) {
+    StackNode * newNode = new StackNode;
+    newNode -> value = x;
+    newNode -> next = iter.current -> next;
+    head -> next = newNode;
+  }
+  delete iter;
+}
+
+int Stack::top() const {
+  return head -> next -> value;
+}
+
+void Stack::pop() {

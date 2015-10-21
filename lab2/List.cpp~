@@ -1,0 +1,158 @@
+//Nathan Nayda
+//ntn4jg
+//ntn4jg@virginia.edu
+//List.cpp
+//9/6/2015
+
+#include <iostream>
+#include "List.h"
+//#include "ListNode.h"
+//#include "ListItr.h"
+using namespace std;
+
+ 
+List::List() { //default constructor
+  head=new ListNode;
+  tail=new ListNode;
+  count=0;
+  head->next=tail;
+  head->previous = NULL;
+  tail->previous=head;
+  tail->next = NULL;
+
+}
+
+List::~List() {    //Destructor
+  makeEmpty();
+  delete head;
+  delete tail;
+}
+
+bool List::isEmpty() const {
+  if (count ==0) {
+    return true;
+}
+  else {
+    return false;
+  }
+}
+
+int List::size() const{
+  return count;
+}
+
+void List::makeEmpty() {       //Removes all items except blank head and tail
+  ListItr iter(head->next);
+  while (!iter.isPastEnd()) {
+    int x=iter.retrieve();    
+iter.moveForward();    
+remove(x);
+    count-=1;
+  }
+}
+
+void List::remove(int x) {     //Removes the first occurrence of x
+  ListItr iter(head->next);
+  while (iter.current->value!=x) {
+    iter.moveForward();
+  }
+  iter.current->previous->next = iter.current->next;
+  iter.current->next->previous = iter.current->previous;
+  delete iter.current;
+  count-=1;
+}
+
+ListItr List::first() {    //Returns an iterator that points to the ListNode in the first position
+  ListItr iter(head->next);
+  return iter;
+}
+
+ListItr List::last() {     //Returns an iterator that points to the ListNode in the last position
+  ListItr iter(tail->previous);
+  return iter;
+}
+
+void List::insertAfter(int x, ListItr position) {    //Inserts x after current iterator position p
+  ListNode * newNode = new ListNode;
+  newNode->value = x;
+  newNode->next = position.current->next;
+  newNode->previous = position.current;
+  position.current->next->previous =newNode;
+  position.current->next = newNode;
+  count+=1;
+}
+
+void List::insertBefore(int x, ListItr position) {    //Inserts x before current iterator position p
+  ListNode * newNode = new ListNode;
+  newNode->value = x;
+  newNode->next = position.current;
+  newNode->previous = position.current->previous;
+  position.current->previous->next = newNode;
+  position.current->previous = newNode;
+  count+=1;
+}
+
+void List::insertAtTail(int x) {   //Insert x at tail of list
+  ListItr iter(tail->previous);
+  insertAfter(x,iter);
+  count+=1;
+}
+
+ListItr List::find(int x) {     //Returns an iterator that points to the first occurrence of x, else return a iterator to the dummy tail node
+  ListItr iter(head->next);  
+  while ((!iter.isPastEnd())&&(iter.current->value!=x)) {
+    iter.moveForward();
+  }
+  return iter;
+}
+
+void printList(List& source, bool direction) {     //Prints list forwards when direction is true and backwards when direction is false 
+ if (direction) {
+   ListItr iter = source.first();
+    while (!iter.isPastEnd()) {
+      cout << iter.retrieve() << " ";
+      iter.moveForward();
+    }
+    cout << endl;
+  }
+  else {
+    ListItr iter = source.last();
+    while (!iter.isPastBeginning()) {
+      cout << iter.retrieve() << " ";
+      iter.moveBackward();
+    }
+    cout << endl;
+  }
+
+}
+
+
+
+
+List::List(const List& source) {      // Copy Constructor
+    head=new ListNode;
+    tail=new ListNode;
+    head->next=tail;
+    tail->previous=head;
+    count=0;
+    ListItr iter(source.head->next);
+    while (!iter.isPastEnd()) {       // deep copy of the list
+        insertAtTail(iter.retrieve());
+        iter.moveForward();
+    }
+}
+
+List& List::operator=(const List& source) { //Equals operator
+    if (this == &source)
+        return *this;
+    else {
+        makeEmpty();
+        ListItr iter(source.head->next);
+        while (!iter.isPastEnd()) {
+            insertAtTail(iter.retrieve());
+            iter.moveForward();
+        }
+    }
+    return *this;
+}
+

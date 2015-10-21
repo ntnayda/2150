@@ -1,0 +1,9 @@
+#Nathan Nayda
+#ntn4jg@virginia.edu
+#ntn4jg
+#averagetime.sh
+#10/20/2015
+
+read -r -p 'Enter a file name: ' -s "$1" PASSWORD
+
+echo "$PASSWORD"

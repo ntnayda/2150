@@ -1,0 +1,59 @@
+//Nathan Nayda
+//ntn4jg@virginia.edu
+//ntn4jg
+//prelab4.cpp
+//9/20/2015
+
+#include<iostream>
+#include <math.h>
+#include <cmath>
+
+
+using namespace std;
+
+
+void sizeOfTest() {
+  cout << "int: " << sizeof(int) << endl;
+cout << "unsigned int: " << sizeof(unsigned int) << endl;
+cout << "float: " << sizeof(float) << endl;
+cout << "double: " << sizeof(double) << endl;
+cout << "char: " << sizeof(char) << endl;
+cout << "bool: " << sizeof(bool) << endl;
+cout << "int*: " << sizeof(int*) << endl;
+ cout << "char*: " << sizeof(char*) << endl;
+cout << "double*: " << sizeof(double*) << endl;
+}
+
+void outputBinary(unsigned int x) {
+  int value = (short) x; 
+  int list[36] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+  for (int i=35;i>=0;i--) {
+    list[i] = x%2;
+    x = x/2;
+  }
+
+  for (int i =0;i<36;i++) {
+    if ((i+1)%4 ==0) {
+      cout << list[i];
+	cout << " ";
+    }
+    else {
+      cout << list[i];
+    }
+  }
+  cout << endl;
+}
+
+
+int main() {
+  unsigned int i = 1000000000;
+  cout << pow(2,i) << endl;
+  sizeOfTest();
+  outputBinary(1);
+  outputBinary(5);
+    outputBinary(1000000);
+    while (true) {
+      i=i+1;
+      cout << i << endl;
+    }
+}

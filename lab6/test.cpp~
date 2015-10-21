@@ -1,0 +1,12 @@
+#include <iostream>
+#include <string>
+#include "hashTable.h"
+
+using namespace std;
+
+int main() {
+  hashTable ht(30);
+  ht.push("bob");
+  int spot = rehash("bob");
+  cout << spot<<endl;
+  cout << ht.get(spot) << endl;

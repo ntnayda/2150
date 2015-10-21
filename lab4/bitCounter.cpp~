@@ -1,0 +1,14 @@
+//Nathan Nayda
+//ntn4jg@virginia.edu
+//ntn4jg
+//bitCounter.cpp
+//9/23/2015
+
+#include <iostream>
+
+using namespace std;
+
+int main(int argc, char **argv) {
+
+
+}

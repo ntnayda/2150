@@ -1,0 +1,25 @@
+//Nathan Nayda
+//ntn4jg@virginia.edu
+//ntn4jg
+//StackItr.h
+//9/17/2015
+
+#ifndef STACKITR_H
+#define STACKITR_H
+
+using namespace std;
+
+class StackItr {
+
+ public:
+  StackItr(); //constructor
+  StackItr(ListNode * theNode) { // one parameter constructor
+  void next; //moves the iterator forward
+  bool isPastEnd() const { //returns true if past end position of the stack
+
+  private:
+    StackNode * current, * next;
+
+  };
+
+#endif

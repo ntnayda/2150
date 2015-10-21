@@ -1,0 +1,4 @@
+int main() {
+  char *array = new char*[10];
+  cout << array[2];
+}

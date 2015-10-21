@@ -1,0 +1,83 @@
+//Nathan Nayda
+//ntn4jg@virginia.edu
+//ntn4jg
+//postfixCalculator.cpp
+//9/13/2015
+
+#include <iostream>
+#include <stack>
+#include "postfixCalculator.h"
+
+using namesapce std;
+
+void postfixCalculator::push(int e){
+  s.push(e);
+
+}
+
+int postfixCalculator::top() const{
+  if (s.empty()) {
+    cout << "Error: stack is empty";
+    exit(0);
+  }
+  else {
+    return s.top();
+  }
+}
+
+void postfixCalculator::pop() {
+  if (s.empty()) {
+    cout << "Error: stack is empty";
+  }
+  else {
+    s.pop();
+  }
+}
+
+bool postfixCalculator::empty() const {
+  if (s.empty()) {
+    return true;
+  }
+  else {
+    return false;
+  }
+}
+
+void postfixCalculator::add() {
+  int x = top();
+  pop();
+  int y = top();
+  pop();
+  push(x+y);
+}
+
+void postfixCalculator::subtract() {
+  int x = top();
+  pop();
+  int y = top();
+  pop();
+  push(y-x);
+}
+
+void postfixCalculator::divide() {
+  int x = top();
+  pop();
+  int y = top();
+  pop();
+  push(y/x);
+}
+
+void postfixCalculator::multiply() {
+  int x = top();
+  pop();
+  int y = top();
+  pop();
+  push(y*x);
+}
+
+void postfixCalculator::negate() {
+  int x = top();
+  pop();
+  push(-x);
+}
+
